@@ -1,0 +1,20 @@
+workflows:
+  flutter-android:
+    name: Flutter Android APK
+    environment:
+      flutter: stable
+    cache:
+      cache_paths:
+        - ~/.pub-cache
+        - ~/.gradle
+    scripts:
+      - name: Install dependencies
+        script: flutter pub get
+      - name: Build APK
+        script: flutter build apk --debug -v
+    artifacts:
+      - build/app/outputs/flutter-apk/pwd-generator.apk
+    publishing:
+      email:
+        recipients:
+          - 2937582423@qq.com
